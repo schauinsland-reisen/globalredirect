@@ -165,7 +165,7 @@ class GlobalredirectSubscriber implements EventSubscriberInterface {
    * @param \Symfony\Component\HttpKernel\Event\GetResponseEvent $event
    */
   public function globalredirectNormalizeAliases(GetResponseEvent $event) {
-    if ($event->getRequestType() != HttpKernelInterface::MASTER_REQUEST || !$this->config->get('normalize_aliases') || !$path = trim($event->getRequest()->getPathInfo(), '/')) {
+    if ($event->getRequestType() != HttpKernelInterface::MASTER_REQUEST || !$this->config->get('normalize_aliases') || !$path = rtrim($event->getRequest()->getPathInfo(), '/')) {
       return;
     }
 
